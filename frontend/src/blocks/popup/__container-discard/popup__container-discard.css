@@ -1,0 +1,31 @@
+.popup__container-discard {
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    background-image: url(../../../images/icon_close-icon.svg);
+    background-size: contain;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    transform: translate(100%, -100%);
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup__container-discard:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+    .popup__container-discard {
+        width: 20px;
+        height: 20px;
+        top: -16px;
+        right: 0;
+        transform: translate(0, -100%);
+    }
+}

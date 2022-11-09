@@ -1,0 +1,16 @@
+.header__user-info {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .header__user-info {
+        margin: 0 0 40px;
+        padding: 10px 0 40px;
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+        flex-direction: column;
+        display: none;
+    }
+}

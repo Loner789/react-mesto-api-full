@@ -1,0 +1,9 @@
+.header__link_style_darkened {
+    color: #A9A9A9;
+}
+
+@media screen and (max-width: 767px) {
+    .header__link_style_darkened {
+        padding-top: 0;
+    }
+}

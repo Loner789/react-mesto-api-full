@@ -1,0 +1,7 @@
+.header__burger-btn_active {
+    height: 20px;
+    width: 20px;
+    background-image: url(../../../../images/icon_close-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}

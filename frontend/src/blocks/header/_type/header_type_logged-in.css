@@ -1,0 +1,7 @@
+@media screen and (max-width: 767px) {
+    .header_type_logged-in {
+        min-height: 56px;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+}
