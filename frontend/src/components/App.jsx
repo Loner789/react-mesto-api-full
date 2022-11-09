@@ -60,7 +60,7 @@ function App() {
       auth
         .getContent()
         .then((res) => {
-          setEmail(res.data.email);
+          setEmail(res.email);
           setLoggedIn(true);
           history.push('/');
         })
@@ -104,22 +104,23 @@ function App() {
   function handleLogin(email, password) {
     return auth
       .authorize(email, password)
-      .then((data) => {
-        if (!data?.token) {
-          return Promise.reject('No data');
+      .then((token) => {
+        if (!token) {
+          return Promise.reject('No token');
         }
 
         setEmail(email);
-        localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
       })
       .catch((err) => console.log(err));
   }
 
   function handleLogout() {
-    localStorage.removeItem('jwt');
+    auth.logout();
     setLoggedIn(false);
     setIsClicked(false);
+    setCards([]);
+    setCurrentUser({});
     history.push('/sign-in');
   }
 
@@ -179,7 +180,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
 
     api
       .changeLikeCardStatus(card._id, !isLiked)
