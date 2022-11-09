@@ -1,5 +1,8 @@
 export const BASE_URL = 'https://api.loner.nomoredomains.icu';
 
+const handleResponse = (res) =>
+  res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
+
 const request = ({ url, method = 'POST', token, data }) => {
   return fetch(`${BASE_URL}${url}`, {
     credentials: 'include',
@@ -9,12 +12,6 @@ const request = ({ url, method = 'POST', token, data }) => {
       ...(!!token && { Authorization: `Bearer ${token}` }),
     },
     ...(!!data && { body: JSON.stringify(data) }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Ошибка ${res.status}`);
   });
 };
 
@@ -22,20 +19,14 @@ export const register = (email, password) => {
   return request({
     url: '/signup',
     data: { password, email },
-  });
-};
-
-export const logout = () => {
-  return request({
-    url: '/logout',
-  });
+  }).then(handleResponse);
 };
 
 export const authorize = (email, password) => {
   return request({
     url: '/signin',
     data: { password, email },
-  });
+  }).then(handleResponse);
 };
 
 export const getContent = (token) => {
@@ -43,5 +34,11 @@ export const getContent = (token) => {
     url: '/users/me',
     method: 'GET',
     token,
+  }).then(handleResponse);
+};
+
+export const logout = () => {
+  return request({
+    url: '/logout',
   });
 };
