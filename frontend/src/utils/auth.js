@@ -1,13 +1,14 @@
-export const BASE_URL = "https://api.loner.nomoredomains.icu";
+export const BASE_URL = 'https://api.loner.nomoredomains.icu';
 
-const request = ({ url, method = "POST", token, data }) => {
+const request = ({ url, method = 'POST', token, data }) => {
   return fetch(`${BASE_URL}${url}`, {
+    credentials: 'include',
     method,
     headers: {
-      "Content-Type": "application/json",
-      ...!!token && { "Authorization": `Bearer ${token}` },
+      'Content-Type': 'application/json',
+      ...(!!token && { Authorization: `Bearer ${token}` }),
     },
-    ...!!data && { body: JSON.stringify(data) },
+    ...(!!data && { body: JSON.stringify(data) }),
   }).then((res) => {
     if (res.ok) {
       return res.json();
@@ -19,22 +20,28 @@ const request = ({ url, method = "POST", token, data }) => {
 
 export const register = (email, password) => {
   return request({
-    url: "/signup",
+    url: '/signup',
     data: { password, email },
+  });
+};
+
+export const logout = () => {
+  return request({
+    url: '/logout',
   });
 };
 
 export const authorize = (email, password) => {
   return request({
-    url: "/signin",
+    url: '/signin',
     data: { password, email },
   });
 };
 
 export const getContent = (token) => {
   return request({
-    url: "/users/me",
-    method: "GET",
+    url: '/users/me',
+    method: 'GET',
     token,
   });
 };

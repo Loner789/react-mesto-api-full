@@ -14,21 +14,24 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
+      credentials: 'include',
+      method: 'GET',
       headers: this._headers,
     }).then(this._checkResult);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
+      credentials: 'include',
+      method: 'GET',
       headers: this._headers,
     }).then(this._checkResult);
   }
 
   setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      credentials: 'include',
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -39,7 +42,8 @@ class Api {
 
   addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
-      method: "POST",
+      credentials: 'include',
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -50,21 +54,24 @@ class Api {
 
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
+      credentials: 'include',
+      method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResult);
   }
 
   changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: `${isLiked ? "PUT" : "DELETE"}`,
+      credentials: 'include',
+      method: `${isLiked ? 'PUT' : 'DELETE'}`,
       headers: this._headers,
     }).then(this._checkResult);
   }
 
   setUserAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
+      credentials: 'include',
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
@@ -74,9 +81,10 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.loner.nomoredomains.icu",
+  baseUrl: 'https://api.loner.nomoredomains.icu',
+  credentials: 'include',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
