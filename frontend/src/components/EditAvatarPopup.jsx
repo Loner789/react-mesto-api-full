@@ -17,10 +17,6 @@ function EditAvatarPopup({ isLoading, isOpen, onClose, onUpdateAvatar }) {
   // eslint-disable-next-line
   }, [isOpen]);
 
-  // useEffect(() => {
-  //   resetForm();
-  // }, [onClose]);
-
   // Functions
   function handleSubmit(e) {
     e.preventDefault();
