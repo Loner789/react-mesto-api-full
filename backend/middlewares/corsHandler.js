@@ -1,8 +1,6 @@
 const allowedCors = [
   'https://loner.nomoredomains.icu',
-  'https://api.loner.nomoredomains.icu',
   'http://loner.nomoredomains.icu',
-  'http://api.loner.nomoredomains.icu',
 ];
 
 // eslint-disable-next-line consistent-return
