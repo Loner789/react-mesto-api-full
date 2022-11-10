@@ -3,7 +3,6 @@ const allowedCors = [
   'https://api.loner.nomoredomains.icu',
   'http://loner.nomoredomains.icu',
   'http://api.loner.nomoredomains.icu',
-  'http://localhost:3000',
 ];
 
 // eslint-disable-next-line consistent-return
